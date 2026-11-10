@@ -1,10 +1,10 @@
 /* Colores de la terminal (morado oscuro) */
 :root {
   --fondo: #0c0c0c;
-  --caja: #140d1f;
-  --verde: #9b5de5;
-  --verde-suave: #4b2a7a;
-  --texto: #e4d9f5;
+  --caja: #1a0d12;
+  --verde: #d14d72;
+  --verde-suave: #7a1f3d;
+  --texto: #f2d7e0;
 }   
 
 body {
