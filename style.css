@@ -1,0 +1,263 @@
+/* Colores de la terminal (morado oscuro) */
+:root {
+  --fondo: #0c0c0c;
+  --caja: #140d1f;
+  --verde: #9b5de5;
+  --verde-suave: #4b2a7a;
+  --texto: #e4d9f5;
+}   
+
+body {
+  margin: 0;
+  font-family: "Courier New", Consolas, monospace; /* letra de consola */
+  background: var(--fondo);
+  color: var(--texto);
+  line-height: 1.6;
+}
+
+/* Cabecera */
+header {
+  padding: 30px 20px;
+  max-width: 900px;
+  margin: 0 auto;
+  border-bottom: 1px dashed var(--verde-suave);
+}
+
+h1 {
+  margin: 0;
+  font-size: 2.5rem;
+  color: var(--verde);
+  text-shadow: 0 0 8px var(--verde);
+}
+
+/* Cursor parpadeando después del nombre */
+h1::after {
+  content: "_";
+  animation: parpadeo 1s infinite;
+}
+
+@keyframes parpadeo {
+  50% { opacity: 0; }
+}
+
+/* La frase de la cabecera empieza como un comando */
+header p::before {
+  content: "$ ";
+  color: var(--verde);
+}
+
+/* Contenido centrado, máximo 900px */
+main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 10px 20px;
+}
+
+section {
+  margin-bottom: 20px;
+}
+
+/* Los títulos de sección parecen rutas de carpeta */
+h2 {
+  margin: 10px 0;
+  color: var(--verde);
+  font-size: 1.4rem;
+}
+
+h2::before {
+  content: "> ";
+}
+
+/* La lista usa guiones en vez de puntos */
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+li::before {
+  content: "- ";
+  color: var(--verde);
+}
+
+/* Cuadrícula de 2 columnas para "Me gusta" */
+.cuadricula {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+article {
+  background: var(--caja);
+  border: 1px solid var(--verde-suave);
+  padding: 12px;
+}
+
+h3 {
+  margin: 0 0 5px;
+  color: var(--verde);
+}
+
+/* Pie de página */
+footer {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  border-top: 1px dashed var(--verde-suave);
+  color: var(--verde-suave);
+}
+
+/* En el móvil: 1 columna y título más pequeño */
+@media (max-width: 600px) {
+  .cuadricula {
+    grid-template-columns: 1fr;
+  }
+  h1 {
+    font-size: 1.8rem;
+  }
+}
+/* Tema claro: solo cambian los colores */
+body.claro {
+  --fondo: #f5f0fa;
+  --caja: #ebe1f7;
+  --verde: #5a2d91;
+  --verde-suave: #b9a3dc;
+  --texto: #2a1a40;
+}
+
+/* Botón de tema con estilo terminal */
+#btn-tema {
+  float: right;
+  background: none;
+  border: 1px solid var(--verde);
+  color: var(--verde);
+  font-family: inherit;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+#btn-tema:hover {
+  background: var(--verde);
+  color: var(--fondo);
+}
+/* Al pulsar un enlace, baja suave en vez de saltar */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Menú en horizontal (ordenador) */
+nav {
+  margin-top: 15px;
+}
+
+#menu {
+  display: flex;
+  gap: 20px;
+  margin: 0;
+}
+
+/* Cada enlace parece una ruta de terminal: ./sobre-mi */
+nav li::before {
+  content: "./";
+  color: var(--verde);
+}
+
+nav a {
+  color: var(--verde);
+  text-decoration: none;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* El botón ☰ no se ve en el ordenador */
+#btn-menu {
+  display: none;
+  background: none;
+  border: 1px solid var(--verde);
+  color: var(--verde);
+  font-family: inherit;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+/* En el móvil: se ve el botón y el menú se esconde */
+@media (max-width: 600px) {
+  #btn-menu {
+    display: block;
+  }
+  #menu {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 10px;
+  }
+  /* Cuando el JS le pone la clase "abierto", aparece */
+  #menu.abierto {
+    display: flex;
+  }
+}
+
+/* Foto de "Sobre mí" con marco de terminal */
+.yo{
+  float: left;
+  width: 140px;
+  height: 140px;
+  object-fit: cover;          /* recorta la foto sin deformarla */
+  border: 1px solid var(--verde);
+  margin: 0 15px 10px 0;
+}
+
+/* Para que la sección no se descoloque con la foto */
+#sobre-mi {
+  display: flow-root;
+}
+
+/* En el móvil la foto va arriba y el texto debajo */
+@media (max-width: 600px) {
+  .yo {
+    float: none;
+    display: block;
+  }
+}
+
+
+/* La frase de la cabecera con degradado morado → vino */
+header p {
+  background: linear-gradient(90deg, var(--verde), #d14d72);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Botones de llamada a la acción */
+.acciones {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;   /* en el móvil bajan de línea si no caben */
+  margin-top: 15px;
+}
+
+.boton {
+  border: 1px solid var(--verde);
+  color: var(--verde);
+  padding: 8px 14px;
+  text-decoration: none;
+}
+
+.boton:hover {
+  background: var(--verde);
+  color: var(--fondo);
+}
+
+/* Enlaces de contacto */
+#contacto a {
+  color: var(--verde);
+}
+
+/* En pantallas grandes, contacto ocupa todo el ancho */
+@media (min-width: 900px) {
+  #contacto {
+    grid-column: 1 / -1;
+  }
+}
